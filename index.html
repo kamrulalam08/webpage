@@ -22,23 +22,23 @@
     body {
       display: flex;
       flex-direction: column;
-      align-items: stretch;
+      align-items: stretch; /* Make body stretch its children horizontally */
     }
     header {
       background-color: #37474f;
       color: #eceff1;
       padding: 1.5rem 2rem;
       text-align: center;
-      width: 100%;
+      width: 100%; /* Ensure header takes full width */
       box-sizing: border-box;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
     .main-content {
       display: flex;
       flex-grow: 1;
-      width: 100%;
+      width: 100%; /* Ensure main-content takes full width */
       box-sizing: border-box;
-      padding: 2rem;
+      padding: 2rem; /* Keep some padding around the content */
     }
     .about-section {
       flex: 1;
@@ -56,27 +56,28 @@
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-      align-items: center;
+      align-items: center; /* Center the carousel horizontally within its container */
     }
     .article-carousel {
       display: flex;
       flex-direction: column !important;
-      width: 80%;
+      width: 80%; /* Adjust width of the carousel */
       box-sizing: border-box;
       padding-bottom: 1rem;
-      background-image: linear-gradient(to right, transparent calc(50% - 1px), #e0e0e0 2px, transparent calc(50% + 1px));
-      background-repeat: repeat-y;
-      background-position: center top;
     }
     .article-item {
       display: flex;
       flex-direction: column;
+      border-bottom: 1px solid #e0e0e0;
       padding-bottom: 0.75rem;
       margin-bottom: 0.75rem;
       box-sizing: border-box;
       transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out, z-index 0s 0.2s;
-      position: relative; /* For stacking context */
-      background-color: transparent; /* Ensure visibility of the background line */
+    }
+    .article-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
     .article-card {
       background-color: #fff;
@@ -153,18 +154,18 @@
     }
 
     footer {
-      background-color: #f9f9f9;
+      background-color: #f9f9f9; /* Match body background */
       text-align: center;
       padding: 1rem 2rem;
       font-size: 0.9em;
       color: #777;
-      width: 100%;
+      width: 100%; /* Ensure footer takes full width */
       box-sizing: border-box;
       border-top: 1px solid #e0e0e0;
     }
     @media (max-width: 768px) {
       body {
-        align-items: stretch;
+        align-items: stretch; /* Ensure full width on smaller screens too */
       }
       .main-content {
         flex-direction: column;
@@ -184,8 +185,6 @@
       }
       .article-carousel {
         width: 100%;
-        background-image: linear-gradient(to right, transparent calc(2rem - 1px), #e0e0e0 2px, transparent calc(2rem + 1px));
-        background-position: left top;
       }
       .about-section {
         padding: 1.5rem;
@@ -227,11 +226,11 @@
       <p>I'm ridiculously good at Sudoku 🧠</p>
     </div>
     <div class="article-carousel-container">
-      <h2>Interesting Reads</h2>
+      <h2>Brain Fodder</h2>
       <div class="article-carousel">
         <div class="article-item">
           <div class="article-date">2025-04-22</div>
-          <div class="article-card" tabindex="0"><a href="#">Most Recent Article Title</a></div>
+          <div class="article-card" tabindex="0"><a href="https://en.wikipedia.org/wiki/Sayyid#South_Asia">The Sayyids</a></div>
         </div>
         <div class="article-item">
           <div class="article-date">2025-04-20</div>
