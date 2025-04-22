@@ -9,45 +9,185 @@
   <title>Kamrul Alam - Software Engineer</title>
   <link rel="icon" href="path_to_favicon.ico" type="image/x-icon">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      color: #333;
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
+      background-color: #f9f9f9;
+      color: #444;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch; /* Make body stretch its children horizontally */
     }
     header {
-      background-color: #2b2d42;
-      color: #fff;
-      padding: 2rem;
+      background-color: #37474f;
+      color: #eceff1;
+      padding: 1.5rem 2rem;
       text-align: center;
+      width: 100%; /* Ensure header takes full width */
+      box-sizing: border-box;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-    .content {
-      max-width: 800px;
-      margin: 2rem auto;
+    .main-content {
+      display: flex;
+      flex-grow: 1;
+      width: 100%; /* Ensure main-content takes full width */
+      box-sizing: border-box;
+      padding: 2rem; /* Keep some padding around the content */
+    }
+    .about-section {
+      flex: 1;
       padding: 2rem;
+      box-sizing: border-box;
+      line-height: 1.6;
+    }
+    .article-carousel-container {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-left: 1px solid #e0e0e0;
+      max-height: 500px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      align-items: center; /* Center the carousel horizontally within its container */
+    }
+    .article-carousel {
+      display: flex;
+      flex-direction: column !important;
+      width: 80%; /* Adjust width of the carousel */
+      box-sizing: border-box;
+      padding-bottom: 1rem;
+    }
+    .article-item {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      box-sizing: border-box;
+      transition: transform 0.2s ease-in-out, margin 0.2s ease-in-out, z-index 0s 0.2s;
+    }
+    .article-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .article-card {
       background-color: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease-in-out, font-size 0.2s ease-in-out;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1em;
     }
-    h1, h2 {
-      color: #2b2d42;
+    .article-card a {
+      text-decoration: none;
+      color: #333;
+      display: block;
     }
-    ul {
-      padding-left: 1.5rem;
+
+    .article-card.older-1 {
+      font-size: 0.85em;
+      color: #777;
     }
-    footer {
+
+    .article-card.older-2 {
+      font-size: 0.75em;
+      color: #999;
+    }
+
+    .article-card.older-3 {
+      font-size: 0.65em;
+      color: #bbb;
+    }
+
+    .article-card.older-4 {
+      font-size: 0.55em;
+      color: #ddd;
+    }
+
+    /* Hover and Focus Styles for Card Expansion */
+    .article-item:hover,
+    .article-item:focus-within {
+      transform: scale(1.05);
+      margin-left: -1rem;
+      margin-right: -1rem;
+      z-index: 10;
+    }
+
+    .article-item:hover .article-card,
+    .article-item:focus-within .article-card {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-date {
+      color: #777;
+      font-size: 0.8em;
+      margin-bottom: 0.3rem;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
+    }
+
+    h1, h2 {
+      color: #37474f;
+    }
+
+    h2 {
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #f9f9f9; /* Match body background */
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9em;
+      color: #777;
+      width: 100%; /* Ensure footer takes full width */
+      box-sizing: border-box;
+      border-top: 1px solid #e0e0e0;
     }
     @media (max-width: 768px) {
-      header {
-        padding: 1.5rem;
+      body {
+        align-items: stretch; /* Ensure full width on smaller screens too */
       }
-      .content {
-        padding: 1rem;
+      .main-content {
+        flex-direction: column;
+        flex-grow: 0;
+        padding: 1.5rem;
+        border-radius: 0;
+        margin: 0;
+      }
+      .article-carousel-container {
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+        overflow-y: auto;
+        max-height: 500px;
+        display: flex;
+        padding: 1.5rem;
+        align-items: stretch;
+      }
+      .article-carousel {
+        width: 100%;
+      }
+      .about-section {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -57,32 +197,67 @@
     <h1>Kamrul Alam</h1>
     <p>Software Engineer</p>
   </header>
-  <div class="content">
-    <h2>About Me</h2>
-    <p>I'm Kamrul Alam, a laid-back software engineer from New York. I hold a BA in Computer Science from Queens College and have a strong interest in both technology and Islamic studies.</p>
+  <div class="main-content">
+    <div class="about-section">
+      <h2>About Me</h2>
+      <p>I'm Kamrul Alam, a laid-back software engineer from New York. I hold a BA in Computer Science from Queens College and have a strong interest in both technology and Islamic studies.</p>
 
-    <h2>Experience</h2>
-    <p><strong>Software Engineer at Unqork</strong></p>
-    <ul>
-      <li>Developed and scaled ETL libraries and solutions.</li>
-      <li>Reduced pipeline failure rates and improved system performance.</li>
-      <li>Optimized MongoDB instances to drive significant cost savings.</li>
-    </ul>
+      <h2>Experience</h2>
+      <p><strong>Software Engineer at Unqork</strong></p>
+      <ul>
+        <li>Developed and scaled ETL libraries and solutions.</li>
+        <li>Reduced pipeline failure rates and improved system performance.</li>
+        <li>Optimized MongoDB instances to drive significant cost savings.</li>
+      </ul>
 
-    <h2>Skills</h2>
-    <ul>
-      <li>Languages: Python, SQL, Java, JavaScript, C++</li>
-      <li>Tools: TensorFlow, Docker, Kubernetes, Flask, FastAPI</li>
-    </ul>
+      <h2>Skills</h2>
+      <ul>
+        <li>Languages: Python, SQL, Java, JavaScript, C++</li>
+        <li>Tools: TensorFlow, Docker, Kubernetes, Flask, FastAPI</li>
+      </ul>
 
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Image Classifier</strong> - A machine learning model for recognizing images.</li>
-      <li><strong>Quiz Platform</strong> - A full-stack app for hosting and taking quizzes.</li>
-    </ul>
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Image Classifier</strong> - A machine learning model for recognizing images.</li>
+        <li><strong>Quiz Platform</strong> - A full-stack app for hosting and taking quizzes.</li>
+      </ul>
 
-    <h2>Fun Fact</h2>
-    <p>I'm ridiculously good at Sudoku 🧠</p>
+      <h2>Fun Fact</h2>
+      <p>I'm ridiculously good at Sudoku 🧠</p>
+    </div>
+    <div class="article-carousel-container">
+      <h2>Interesting Reads</h2>
+      <div class="article-carousel">
+        <div class="article-item">
+          <div class="article-date">2025-04-22</div>
+          <div class="article-card" tabindex="0"><a href="#">Most Recent Article Title</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-04-20</div>
+          <div class="article-card older-1" tabindex="0"><a href="#">Another Interesting Read</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-04-15</div>
+          <div class="article-card older-2" tabindex="0"><a href="#">A Slightly Older Article</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-04-10</div>
+          <div class="article-card older-3" tabindex="0"><a href="#">Yet Another Good One</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-04-05</div>
+          <div class="article-card older-4" tabindex="0"><a href="#">An Older Find</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-04-01</div>
+          <div class="article-card older-4" tabindex="0"><a href="#">Another Old One</a></div>
+        </div>
+        <div class="article-item">
+          <div class="article-date">2025-03-25</div>
+          <div class="article-card older-4" tabindex="0"><a href="#">Even Older Still</a></div>
+        </div>
+      </div>
+    </div>
   </div>
   <footer>
     &copy; 2025 Kamrul Alam. All rights reserved.
